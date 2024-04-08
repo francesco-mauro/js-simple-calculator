@@ -21,3 +21,23 @@ for (let i = 0; i < buttons.length; i++) {
         updateDisplay(currentInput);
     });
 }
+
+// Milestone 2
+
+// variavbili per salvare i risultati al 2 e 3 click  
+let currentOperator;
+let firstOperand = '';
+
+
+let operatorButtons = document.querySelectorAll('.operators button');
+
+// event listener a tutti i pulsanti operatori
+for (let i = 0; i < operatorButtons.length; i++) {
+    operatorButtons[i].addEventListener('click', function() {
+        currentOperator = this.textContent; 
+        firstOperand = currentInput;        
+
+        currentInput = '';                  
+        updateDisplay('0');                 
+    });
+}
