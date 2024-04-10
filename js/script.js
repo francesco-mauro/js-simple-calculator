@@ -1,6 +1,7 @@
 let currentInput = ''; 
 console.log(currentInput, typeof currentInput);
 
+// Seleziona display
 const resultDisplay = document.getElementById('result');
 console.log( resultDisplay, typeof resultDisplay); 
 
@@ -35,9 +36,27 @@ let operatorButtons = document.querySelectorAll('.operators button');
 for (let i = 0; i < operatorButtons.length; i++) {
     operatorButtons[i].addEventListener('click', function() {
         currentOperator = this.textContent; 
-        firstOperand = currentInput;        
+        firstOperand = currentInput;     
+        console.log(currentOperator, typeof currentOperator);
+   
 
         currentInput = '';                  
         updateDisplay('0');                 
     });
 }
+
+// MILESTONE 3
+
+let equalsButton = document.querySelector('.numbers .orange');
+
+equalsButton.addEventListener('click', function() {
+    let secondOperand = currentInput;
+
+    // Utilizza calculateResult
+    let result = calculateResult(firstOperand, currentOperator, secondOperand);
+
+    if (result !== 'Errore' && result !== 'Errore! Operatore non valido.') {
+        updateDisplay(result);
+        currentInput = result; //Salvataggio ultimo calcolo
+    }
+});
